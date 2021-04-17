@@ -1,0 +1,16 @@
+import java.util.Scanner; //导入Scanner类
+public class Exercise1 {
+public static void main(String[] args) {
+float a;
+float b;
+float c;
+float aver = 0;
+Scanner reader = new Scanner(System.in);
+System.out.print(“请输入三位数：”);
+a = reader.nextFloat(); //从键盘读取a
+b = reader.nextFloat(); //b
+c = reader.nextFloat(); //c
+aver = (a+b+c)/3;
+System.out.println(“他们的平均值为：”+aver); //并量符号“+”将常数值和字符串一并输出
+}
+}
