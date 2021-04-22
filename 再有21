@@ -1,0 +1,129 @@
+package cn.jpi.demo;
+
+import java.util.Scanner;
+
+import org.junit.Test;
+
+public class StudentsScoreStatistics {
+//	定义全局变量
+	
+//	班级学生名字（数组）
+	static String[] studentName;
+//	学期课程名（数组）
+	static String[] courseName;
+//	学生成绩（二维数组）
+	static int[][] studentScore;
+//	学生总分
+	static int[] studentScoreSum;
+//	学生平均分
+	static double[] studentScoreAvg;
+	
+//	定义Object二维数组来装矩形
+	static Object[][] table;
+	
+//	声明Scanner对象
+	static Scanner sc = new Scanner(System.in);
+	
+	public static void main(String[] args) {
+//		1.欢迎使用
+		welcome();
+//		2.输入班级人数，课程数，课程名以及每位同学的各门课的成绩
+		print();
+//		3.打印结果
+		end();
+	}
+
+//	4.定义输出总结果方法
+	private static void end() {
+//		输出表头
+		System.out.print("学生"+"\t");
+//		遍历课程名数组
+		for(String s:courseName) {
+			System.out.print(s+"\t");
+		}
+		System.out.println("总分"+"\t"+"平均分");
+//		二维数组的遍历
+		for(int i = 0;i<table.length;i++) {
+			for(int j = 0;j<table[i].length;j++) {
+				System.out.print(table[i][j]+"\t");
+			}
+			System.out.println();
+		}
+	}
+	
+//	2.定义输入班级人数，课程数，课程名以及录入每位同学的各门课的成绩方法
+	private static void print() {
+//		输入班级人数（确定学生数组的长度）
+		System.out.println("请输入班级学生人数：");
+		int i  = sc.nextInt();
+		studentName = new String[i];
+		
+//		确定学生总分数组长度
+		studentScoreSum = new int[i];
+		
+//		确定学生平均分数组长度
+		studentScoreAvg = new double[i];
+		
+//		输入学生课程数（确定课程数组的长度）
+		System.out.println("请输入学期课程数：");
+		int j  = sc.nextInt();
+		courseName = new String[j];
+		
+//		确定学生成绩数组长度
+		studentScore = new int[i][j];
+		
+//		确定矩阵大小
+		table = new Object[i][j+3];
+		
+//		输入课程名字（循环）
+		for(int k = 0;k<courseName.length;k++) {
+			System.out.println("请定义第"+(k+1)+"门课的名字：");
+			courseName[k] = sc.next();
+		}
+//		输入学生的姓名，并录入他的每门课的成绩（循环嵌套）
+//		声明总分变量
+		int sum = 0;
+//		声明平均分变量
+//		double avg = 0;
+		for(int l = 0;l<studentName.length;l++) {
+			System.out.println("请输入第"+(l+1)+"个学生的姓名：");
+			studentName[l] = sc.next();
+			
+			for(int m = 0;m<courseName.length;m++) {
+				System.out.println("请输入"+studentName[l]+"同学"+courseName[m]+"的成绩：");
+				studentScore[l][m] = sc.nextInt();
+				sum = sum + studentScore[l][m];
+//				avg = sum/courseName.length;
+			}
+			studentScoreSum[l] = sum;
+			studentScoreAvg[l] = sum/courseName.length;
+//			sum归0，重新计算
+			sum = 0;
+//			System.out.println(sum+"....."+avg);
+		}
+//		为 表格填入数据
+		for(int n = 0;n<studentName.length;n++) {
+			for(int o = 0;o<courseName.length+3;o++) {
+				if(o>=1 && o<=courseName.length) {
+					table[n][o] = studentScore[n][o-1];
+				}else if(o==0) {
+					table[n][o] = studentName[n];
+				}else if(o==courseName.length+1){
+					table[n][o] = studentScoreSum[n];
+				}else {
+					table[n][o] = studentScoreAvg[n];
+				}
+			}
+		}
+	}
+	
+//	1.定义打印表头方法
+	private static void welcome() {
+		System.out.println("欢迎使用简单不简约成绩统计系统^_^");
+	}
+	@Test
+	public void test() {
+
+		}
+	}
+}
