@@ -1,0 +1,9 @@
+// 定义一个Rectangle的公开类，并继承Shape类
+class Rectangle extends Shape{
+    // 定义一个area方法，实现计算矩形面积的功能。
+    public double area(){
+        double v;
+        v=height*width;
+        return v;
+    }
+}
