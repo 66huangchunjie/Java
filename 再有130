@@ -1,0 +1,53 @@
+
+import java.util.Scanner;
+
+public class FindTest {
+    public static void main(String[] args) {
+        Scanner scanner=new Scanner(System.in);
+	// 请在 Begin-End 间编写代码
+        /********** Begin **********/
+        // 定义变量
+      int i,x;
+        // 接收给定数据
+        i=scanner.nextInt();
+        x=scanner.nextInt();
+        // 定义数组
+        int [] arr=new int[i];
+        // 给数组赋值
+       for(int j=0;j<i;j++){
+           arr[j]=scanner.nextInt();
+       }
+       int min=0;
+       int max=arr.length-1;
+       int mid=(min+max)/2;
+       int flag=1;
+        // 查找给定元素索引，并输出查找次数
+	while(true)
+    {
+        if(x<arr[mid]){
+            max=mid-1;
+            mid=(min+max)/2;
+            flag++;
+        }
+        else if(x>arr[mid]){
+            min=mid+1;
+            mid=(min+max)/2;
+            flag++;
+        }
+        else
+        {
+            System.out.print("索引值："+mid);
+            System.out.print("。");
+            System.out.print("查找次数："+flag);
+            System.out.print("。");
+            break;
+        }
+        if(max<min)
+        {
+            System.out.print("没有找到");
+            break;
+        }
+    }
+        /********** End **********/
+    }
+ }
