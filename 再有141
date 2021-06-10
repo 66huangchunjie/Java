@@ -1,0 +1,24 @@
+
+import java.util.Scanner;
+
+public class ExcTest {
+    public static void main(String[] args) {
+        // 请在Begin-End间编写代码
+        /********** Begin **********/
+        // 第一步：接收给定的整数
+       Scanner sc = new Scanner(System.in);
+       int a,b;
+       a=sc.nextInt();
+       b=sc.nextInt();
+       
+        // 第二步：求给定两个数的商，并捕获除数为0的异常
+     try{
+         System.out.println(a/b);
+     }catch(Exception e){
+         System.out.println("除数不能为0");
+         
+     }
+        /********** End **********/
+
+    }
+}
