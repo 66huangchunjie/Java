@@ -1,0 +1,42 @@
+/**
+ * 任务：使用 instanceof 运算符判断指定对象是否为特定类的一个实例
+ */
+class Person{}
+class Students extends Person{}
+class Sch extends Students{}
+public class Demos{
+    public static void main(String[] args) {
+        // 请在下面的Begin-End之间按照注释中给出的提示编写正确的代码
+        /********* Begin *********/
+        // 创建一个Students对象，判断该对象是否是Person类的实例
+        Students p1=new Students();
+        if(p1 instanceof Person){
+            System.out.println("true");
+        }
+        else {
+            System.out.println("false");
+        }
+        //如果是输出：true，否则为false
+
+        // 创建一个Sch对象，判断该对象是否是Person类的实例
+        // 输出判断结果
+        Sch p2=new Sch();
+        if(p2 instanceof Person){
+            System.out.println("true");
+        }
+        else {
+            System.out.println("false");
+        }
+        // 创建一个Person对象，判断该对象是否是Students类的实例
+        Person p3=new Person();
+        if(p3 instanceof Students){
+            System.out.println("true");
+        }
+        else {
+            System.out.println("false");
+        }
+        // 输出判断结果
+
+        /********** End **********/
+    }
+}
